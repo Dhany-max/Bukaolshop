@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Pilih E-Wallet</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2196f3;
+            padding: 10px;
+            height: 40px;
+            color: white;
+            margin-bottom: 10px;
+            border-radius: 0px 0px 50px 50px;
+        }
+        .container {
+            width: 95%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1.5px solid #eeeeee;
+            border-radius: 15px;
+        }
+        h2 {
+            text-align: center;
+            color: #2196f3;
+            border-radius: 15px 15px 0 0;
+        }
+        .search-box {
+            margin: 5px;
+        }
+        .search-box input[type="text"] {
+            width: 90%;
+            padding: 15px;
+            font-family: 'Montserrat', Sans-Serif;
+            font-weight: 600;
+            font-size: 14px;
+            align-content: center;
+            border: 2px solid #2196f3;
+            border-radius: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-box input[type="text"]:focus {
+            border-color: #2196f3;
+        }
+        .card-list {
+            margin: 0;
+            padding: 0;
+            max-height: 700px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+        }
+        .card {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #eeeeee;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        .card p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+        a, a:visited, a:link {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="value" onkeyup="filterCards()" placeholder="Mau Topup E-Wallet Apa?..">
+            </div>
+        </div>
+        <div class="card-list" id="cardList">
+            <a href="https://danpayment.jualan.me/digital/174821" class="card" data-name="Gopay">
+                <img src="https://bukaolshop.s3-id-jkt-1.kilatstorage.id/100754/727877418q.jpg" alt="Gopay">
+                <p>Gopay</p>
+            </a>
+            <a href="https://danpayment.olshopku.com/digital/313424" class="card" data-name="Dana">
+                <img src="https://bukaolshop.s3-id-jkt-1.kilatstorage.id/100754/196779142p.jpg" alt="Dana">
+                <p>Dana</p>
+            </a>
+            <a href="https://danpayment.jualan.me/digital/178854" class="card" data-name="Ovo">
+                <img src="https://images.bukaolshop.com/2024-10/100754/5984e520fc04435986.jpg" alt="Ovo">
+                <p>Ovo</p>
+            </a>
+            <a href="https://danpayment.jualan.me/digital/178861" class="card" data-name="ShopeePay">
+                <img src="https://bukaolshop.s3-id-jkt-1.kilatstorage.id/100754/864658639h.jpg" alt="ShopeePay">
+                <p>ShopeePay</p>
+            </a>
+               <a href="https://danpayment.jualan.me/digital/178863" class="card" data-name="LinkAja">
+                <img src="https://images.bukaolshop.com/2024-10/100754/b776a22c04e4361061.jpg" alt="LinkAja">
+                <p>LinkAja</p>
+            </a>
+           <a href="https://danpayment.jualan.me/digital/178858" class="card" data-name="Maxim">
+                <img src="https://images.bukaolshop.com/2024-10/100754/4a9e15557d0e875961.jpg" alt="Maxim">
+                <p>Maxim</p>
+            </a>
+            <a href="https://danpayment.jualan.me/digital/178864" class="card" data-name="Grab">
+                <img src="https://images.bukaolshop.com/2024-10/100754/f207e3bb5334752140.jpg" alt="Grab">
+                <p>Grab</p>
+            </a>
+           <a href="https://danpayment.olshopku.com/digital/166519" class="card" data-name="Grab Driver">
+                <img src="https://images.bukaolshop.com/2024-10/100754/39fc5a2fc5a3793047.jpg" alt="Grab Driver">
+                <p>Grab Driver</p>
+            </a>
+            <a href="https://danpayment.jualan.me/digital/163285" class="card" data-name="Gojek Driver">
+                <img src="https://images.bukaolshop.com/2024-10/100754/0569eafcf379186431.jpg" alt="Gojek Driver">
+                <p>Gojek Driver</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function filterCards() {
+            const input = document.getElementById('value').value.toLowerCase();
+            const cards = document.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let card = cards[i];
+                let cardName = card.getAttribute('data-name').toLowerCase();
+                
+                if (cardName.includes(input)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
